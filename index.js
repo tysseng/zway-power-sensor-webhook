@@ -36,13 +36,37 @@ PowerSensorWebhook.prototype.init = function (config) {
 	var self = this;
 
 	this.handler = function (vDev) {
-		if(self.config.urlChange && self.config.urlChange !== ''){
-			var id = vDev.id;
-			var value = vDev.get('metrics:level');
+    var id = vDev.id;
+    var value = vDev.get('metrics:level');
+
+    var urlOn = self.config.urlOn;
+    var urlOff = self.config.urlOff;
+    var urlChange = self.config.urlChange;
+    var tresholdLow = self.config.tresholdLow || 0;
+    var tresholdHigh = self.config.tresholdHigh || 0.1;
+
+		if(urlChange && urlChange !== ''){
 			console.log("Sensor changed, updating: " + id + '=' + value);
 			http.request({
 				method: 'GET',
-				url: self.config.urlChange.replace("${id}", id).replace("${value}", value )
+				url: urlChange.replace("${id}", id).replace("${value}", value )
+			});
+		}
+		if(urlOn && urlOn !== ''){
+			if(value >= tresholdHigh){
+        console.log("Sensor value is on, updating: " + id + '=' + value);
+        http.request({
+          method: 'GET',
+          url: urlOn.replace("${id}", id).replace("${value}", value )
+        });
+			}
+		}
+		if(urlOff && urlOff !== ''){
+      if(value <= tresholdLow){
+			console.log("Sensor value is off, updating: " + id + '=' + value);
+			http.request({
+				method: 'GET',
+				url: urlOff.replace("${id}", id).replace("${value}", value )
 			});
 		}
 	};
