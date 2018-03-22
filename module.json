@@ -5,7 +5,7 @@
 	"author": "Joakim Tysseng",
 	"homepage": "https://github.com/tysseng/zway-power-sensor-webhook",
 	"icon": "icon.png",
-	"moduleName": "SensorValueLogging",
+	"moduleName": "PowerSensorWebhook",
 	"version": "1.0.1",
 	"maturity": "stable",
 	"repository": {

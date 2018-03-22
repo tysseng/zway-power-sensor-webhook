@@ -6,7 +6,7 @@
 	"l_logTo_json":"to JSON file in storage",
 	"l_logTo_http":"send via HTTP request",
 	"l_url":"HTTP request to do. Strings ${id} and ${value} are replaced by sensor ID and value correspondingly",
-	"h_url":"Example: http://mydomainname.org/path/to/something/${id}?myval=${value}"
+	"h_url":"Example: http://mydomainname.org/path/to/something/${id}?myval=${value}",
 	"l_urlChange":"HTTP request for any change",
 	"h_urlChange":"Will be called for any change in sensor value",
 	"l_urlOn":"HTTP request for on",
