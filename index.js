@@ -28,7 +28,7 @@ _module = PowerSensorWebhook;
 // ----------------------------------------------------------------------------
 
 PowerSensorWebhook.prototype.init = function (config) {
-console.log("Kickstarted Sensor Value Logging");
+	console.log("Kickstarted Power Sensor Webhook");
 	// Call superclass' init (this will process config argument and so on)
 	PowerSensorWebhook.super_.prototype.init.call(this, config);
 
@@ -36,25 +36,13 @@ console.log("Kickstarted Sensor Value Logging");
 	var self = this;
 
 	this.handler = function (vDev) {
-		if (self.config.logTo === "JSONFile") {
-			var storedLog = loadObject("PowerSensorWebhook_" + vDev.id + "_" + self.id);
-			if (!storedLog) {
-				storedLog = {
-					deviceId: vDev.id,
-					deviceName: vDev.get("metrics:title"),
-					sensorData: []
-				};
-			}
-			storedLog.sensorData.push({"time": Date.now(), "value": vDev.get("metrics:level")});
-			saveObject("PowerSensorWebhook_" + vDev.id + "_" + self.id, storedLog);
-			storedLog = null;
-		}
-		
-		if (self.config.logTo === "HTTPGET") {
-			console.log('SVL: Saving to HTTP - dev: ' + vDev.id + ', val:' + vDev.get('metrics:level'));
+		if(self.config.urlChange && self.config.urlChange !== ''){
+			var id = vDev.id;
+			var value = vDev.get('metrics:level');
+			console.log("Sensor changed, updating: " + id + '=' + value);
 			http.request({
 				method: 'GET',
-				url: self.config.url.replace("${id}", vDev.id).replace("${value}", vDev.get('metrics:level'))
+				url: self.config.urlChange.replace("${id}", id).replace("${value}", value )
 			});
 		}
 	};

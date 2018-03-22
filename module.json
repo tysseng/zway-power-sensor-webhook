@@ -2,15 +2,15 @@
 	"dependencies": [],
 	"singleton": false,
 	"category": "support_external_dev",
-	"author": "Z-Wave.Me",
-	"homepage": "http://razberry.z-wave.me",
+	"author": "Joakim Tysseng",
+	"homepage": "https://github.com/tysseng/zway-power-sensor-webhook",
 	"icon": "icon.png",
-	"moduleName":"SensorValueLogging",
+	"moduleName": "SensorValueLogging",
 	"version": "1.0.1",
 	"maturity": "stable",
 	"repository": {
-			"type": "git",
-			"source": "https://github.com/Z-Wave-Me/home-automation"
+		"type": "git",
+		"source": "https://github.com/tysseng/zway-power-sensor-webhook"
 	},
 	"defaults": {
 		"title": "__m_title__",
@@ -26,15 +26,17 @@
 				"enum": "namespaces:devices_sensorBinary:deviceId,namespaces:devices_sensorMultilevel:deviceId,namespaces:devices_switchBinary:deviceId,namespaces:devices_switchMultilevel:deviceId,namespaces:devices_doorlock:deviceId,namespaces:devices_switchControl:deviceId, namespaces:devices_toggleButton:deviceId",
 				"required": true
 			},
-			"logTo": {
-				"enum": ["JSONFile", "HTTPGET"],
-				"required": true
-			},
-			"url": {
+			"urlChange": {
 				"type": "string",
-				"depends": "logTo",
-				"required": true,
-				"dependencies": "logTo"
+				"required": false
+			},
+			"urlOn": {
+				"type": "string",
+				"required": false
+			},
+			"urlOff": {
+				"type": "string",
+				"required": false
 			}
 		},
 		"required": false
@@ -47,16 +49,17 @@
 				"field": "optionLabels",
 				"optionLabels": "namespaces:devices_sensorBinary:deviceName,namespaces:devices_sensorMultilevel:deviceName,namespaces:devices_switchBinary:deviceName,namespaces:devices_switchMultilevel:deviceName,namespaces:devices_doorlock:deviceName,namespaces:devices_switchControl:deviceName, namespaces:devices_toggleButton:deviceName"
 			},
-			"logTo": {
-				"label": "__l_logTo__",
-				"optionLables": ["__l_logTo_json__", "__l_logTo_http__"]
+			"urlChange": {
+				"label": "__l_urlChange__",
+				"helper": "__h_urlChange__"
 			},
-			"url": {
-				"label": "__l_url__",
-				"helper": "__h_url__",
-				"dependencies": {
-					"logTo": "HTTPGET"
-		}
+			"urlOn": {
+				"label": "__l_urlOn__",
+				"helper": "__h_urlOn__"
+			},
+			"urlOff": {
+				"label": "__l_urlOff__",
+				"helper": "__h_urlOff__"
 			}
 		}
 	}
