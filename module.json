@@ -60,7 +60,8 @@
         "optionLabels": "namespaces:devices_sensorBinary:deviceName,namespaces:devices_sensorMultilevel:deviceName,namespaces:devices_switchBinary:deviceName,namespaces:devices_switchMultilevel:deviceName,namespaces:devices_doorlock:deviceName,namespaces:devices_switchControl:deviceName, namespaces:devices_toggleButton:deviceName"
       },
       "alias": {
-        "label": "__l_alias__"
+        "label": "__l_alias__",
+        "helper": "__h_alias__"
       },
       "threshold": {
         "label": "__l_threshold__",
