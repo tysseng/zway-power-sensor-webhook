@@ -3,6 +3,7 @@
 Checkout on raspberry pi
 
 run 'tar -zcvf ../PowerSensorWebhook.tar.gz *' from root 
+
 use developer.z-wave.me from raspberry to upload module
 
 
