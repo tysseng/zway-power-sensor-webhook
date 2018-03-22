@@ -53,25 +53,25 @@ PowerSensorWebhook.prototype.init = function (config) {
 
     if (state === 'on') {
       if (urlOn && (stateHasChanged || resend)) {
-        console.log("Sensor value is on, updating: " + id + '=' + value);
-        http.request({
-          method: 'GET',
-          url: urlOn
-            .replace("${id}", id)
-            .replace("${value}", value)
-            .replace("${alias}", alias)
-        });
+
+        var urlOnRepl = urlOn
+          .replace("${id}", id)
+          .replace("${value}", value)
+          .replace("${alias}", alias);
+
+        console.log("Sensor on (" + value + "), calling webhook " + urlOnRepl);
+        http.request({ method: 'GET', url: urlOnRepl });
       }
     } else {
       if (urlOff && (stateHasChanged || resend)) {
-        console.log("Sensor value is off, updating: " + id + '=' + value);
-        http.request({
-          method: 'GET',
-          url: urlOff
-            .replace("${id}", id)
-            .replace("${value}", value)
-            .replace("${alias}", alias)
-        });
+
+        var urlOffRepl = urlOff
+          .replace("${id}", id)
+          .replace("${value}", value)
+          .replace("${alias}", alias);
+
+        console.log("Sensor off (" + value + "), calling webhook " + urlOffRepl);
+        http.request({ method: 'GET', url: urlOffRepl });
       }
     }
   };
