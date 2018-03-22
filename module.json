@@ -6,8 +6,8 @@
 	"homepage": "https://github.com/tysseng/zway-power-sensor-webhook",
 	"icon": "icon.png",
 	"moduleName": "PowerSensorWebhook",
-	"version": "1.0.1",
-	"maturity": "stable",
+	"version": "0.0.1",
+	"maturity": "dev",
 	"repository": {
 		"type": "git",
 		"source": "https://github.com/tysseng/zway-power-sensor-webhook"
