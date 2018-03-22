@@ -6,11 +6,14 @@
 	"l_logTo_json":"to JSON file in storage",
 	"l_logTo_http":"send via HTTP request",
 	"l_url":"HTTP request to do. Strings ${id} and ${value} are replaced by sensor ID and value correspondingly",
-	"h_url":"Example: http://mydomainname.org/path/to/something/${id}?myval=${value}",
-	"l_urlChange":"HTTP request for any change",
-	"h_urlChange":"Will be called for any change in sensor value",
-	"l_urlOn":"HTTP request for on",
-	"h_urlOn":"Will be called if sensor value is above on treshold",
-	"l_urlOff":"HTTP request for off",
-	"h_urlOff":"Will be called if sensor value is below treshold"
+	"h_url":"Example: http://myservice.org/path/to/something/${id}?myval=${value}=myAlias=${alias}",
+	"l_alias":"Sensor alias to add to request",
+	"l_urlChange":"HTTP request for any change. Strings ${id} and ${value} are replaced by sensor ID and value correspondingly",
+	"h_urlChange":"Will be called for any change in sensor value. Example: http://myservice.org/path/to/something/${id}?myval=${value}=myAlias=${alias}",
+	"l_urlOn":"HTTP request for on. Strings ${id} and ${value} are replaced by sensor ID and value correspondingly",
+	"h_urlOn":"Will be called if sensor value is above on treshold. Example: http://myservice.org/path/to/something/${id}?myval=${value}=myAlias=${alias}",
+	"l_tresholdOn":"Upper threshold (optional, default=0.1",
+	"l_urlOff":"HTTP request for off. Strings ${id} and ${value} are replaced by sensor ID and value correspondingly",
+	"h_urlOff":"Will be called if sensor value is below treshold. Example: http://myservice.org/path/to/something/${id}?myval=${value}=myAlias=${alias}",
+	"l_tresholdOff":"Lower threshold (optional, default=0"
 }

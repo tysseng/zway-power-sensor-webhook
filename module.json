@@ -1,66 +1,87 @@
 {
-	"dependencies": [],
-	"singleton": false,
-	"category": "support_external_dev",
-	"author": "Joakim Tysseng",
-	"homepage": "https://github.com/tysseng/zway-power-sensor-webhook",
-	"icon": "icon.png",
-	"moduleName": "PowerSensorWebhook",
-	"version": "0.0.1",
-	"maturity": "dev",
-	"repository": {
-		"type": "git",
-		"source": "https://github.com/tysseng/zway-power-sensor-webhook"
-	},
-	"defaults": {
-		"title": "__m_title__",
-		"description": "__m_descr__",
-		"device": ""
-	},
-	"schema": {
-		"type": "object",
-		"properties": {
-			"device": {
-				"field": "enum",
-				"datasource": "namespaces",
-				"enum": "namespaces:devices_sensorBinary:deviceId,namespaces:devices_sensorMultilevel:deviceId,namespaces:devices_switchBinary:deviceId,namespaces:devices_switchMultilevel:deviceId,namespaces:devices_doorlock:deviceId,namespaces:devices_switchControl:deviceId, namespaces:devices_toggleButton:deviceId",
-				"required": true
-			},
-			"urlChange": {
-				"type": "string",
-				"required": false
-			},
-			"urlOn": {
-				"type": "string",
-				"required": false
-			},
-			"urlOff": {
-				"type": "string",
-				"required": false
-			}
-		},
-		"required": false
-	},
-	"options": {
-		"fields": {
-			"device": {
-				"label": "__l_device__",
-				"datasource": "namespaces",
-				"field": "optionLabels",
-				"optionLabels": "namespaces:devices_sensorBinary:deviceName,namespaces:devices_sensorMultilevel:deviceName,namespaces:devices_switchBinary:deviceName,namespaces:devices_switchMultilevel:deviceName,namespaces:devices_doorlock:deviceName,namespaces:devices_switchControl:deviceName, namespaces:devices_toggleButton:deviceName"
-			},
-			"urlChange": {
-				"label": "__l_urlChange__",
-				"helper": "__h_urlChange__"
-			},
-			"urlOn": {
-				"label": "__l_urlOn__",
-				"helper": "__h_urlOn__"
-			},
-			"urlOff": {
-				"label": "__l_urlOff__",
-				"helper": "__h_urlOff__"
-			}
-		}
-	}
+  "dependencies": [],
+  "singleton": false,
+  "category": "support_external_dev",
+  "author": "Joakim Tysseng",
+  "homepage": "https://github.com/tysseng/zway-power-sensor-webhook",
+  "icon": "icon.png",
+  "moduleName": "PowerSensorWebhook",
+  "version": "0.0.1",
+  "maturity": "dev",
+  "repository": {
+    "type": "git",
+    "source": "https://github.com/tysseng/zway-power-sensor-webhook"
+  },
+  "defaults": {
+    "title": "__m_title__",
+    "description": "__m_descr__",
+    "device": ""
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "device": {
+        "field": "enum",
+        "datasource": "namespaces",
+        "enum": "namespaces:devices_sensorBinary:deviceId,namespaces:devices_sensorMultilevel:deviceId,namespaces:devices_switchBinary:deviceId,namespaces:devices_switchMultilevel:deviceId,namespaces:devices_doorlock:deviceId,namespaces:devices_switchControl:deviceId, namespaces:devices_toggleButton:deviceId",
+        "required": true
+      },
+      "alias": {
+        "type": "string",
+        "required": false
+      },
+      "urlChange": {
+        "type": "string",
+        "required": false
+      },
+      "urlOn": {
+        "type": "string",
+        "required": false
+      },
+      "tresholdOn": {
+        "type": "number",
+        "required": false
+      },
+      "urlOff": {
+        "type": "string",
+        "required": false
+      },
+      "tresholdOff": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "required": false
+  },
+  "options": {
+    "fields": {
+      "device": {
+        "label": "__l_device__",
+        "datasource": "namespaces",
+        "field": "optionLabels",
+        "optionLabels": "namespaces:devices_sensorBinary:deviceName,namespaces:devices_sensorMultilevel:deviceName,namespaces:devices_switchBinary:deviceName,namespaces:devices_switchMultilevel:deviceName,namespaces:devices_doorlock:deviceName,namespaces:devices_switchControl:deviceName, namespaces:devices_toggleButton:deviceName"
+      },
+      "alias": {
+        "label": "__l_alias__"
+      },
+      "urlChange": {
+        "label": "__l_urlChange__",
+        "helper": "__h_urlChange__"
+      },
+      "urlOn": {
+        "label": "__l_urlOn__",
+        "helper": "__h_urlOn__"
+      },
+      "tresholdOn": {
+        "label": "__l_tresholdOn__"
+      },
+      "urlOff": {
+        "label": "__l_urlOff__",
+        "helper": "__h_urlOff__"
+      },
+      "tresholdOff": {
+        "label": "__l_tresholdOff__"
+      }
+    }
+  }
 }
