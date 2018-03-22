@@ -15,7 +15,9 @@
   "defaults": {
     "title": "__m_title__",
     "description": "__m_descr__",
-    "device": ""
+    "device": "",
+    "threshold": 0.1,
+    "resend": false
   },
   "schema": {
     "type": "object",
@@ -30,25 +32,21 @@
         "type": "string",
         "required": false
       },
-      "urlChange": {
-        "type": "string",
-        "required": false
+      "threshold": {
+        "type": "number",
+        "required": true
       },
       "urlOn": {
         "type": "string",
-        "required": false
-      },
-      "tresholdOn": {
-        "type": "number",
         "required": false
       },
       "urlOff": {
         "type": "string",
         "required": false
       },
-      "tresholdOff": {
-        "type": "string",
-        "required": false
+      "resend": {
+        "type": "boolean",
+        "required": true
       }
     },
     "required": false
@@ -64,23 +62,21 @@
       "alias": {
         "label": "__l_alias__"
       },
-      "urlChange": {
-        "label": "__l_urlChange__",
-        "helper": "__h_urlChange__"
+      "threshold": {
+        "label": "__l_threshold__",
+        "helper": "__h_threshold__"
       },
       "urlOn": {
         "label": "__l_urlOn__",
         "helper": "__h_urlOn__"
       },
-      "tresholdOn": {
-        "label": "__l_tresholdOn__"
-      },
       "urlOff": {
         "label": "__l_urlOff__",
         "helper": "__h_urlOff__"
       },
-      "tresholdOff": {
-        "label": "__l_tresholdOff__"
+      "resend": {
+        "type": "checkbox",
+        "rightLabel": "__rl_resend__"
       }
     }
   }

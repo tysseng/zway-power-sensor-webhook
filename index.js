@@ -42,22 +42,17 @@ PowerSensorWebhook.prototype.init = function (config) {
     var alias = self.config.alias || '';
     var urlOn = self.config.urlOn;
     var urlOff = self.config.urlOff;
-    var urlChange = self.config.urlChange;
-    var tresholdOff = self.config.tresholdOff || 0;
-    var tresholdOn = self.config.tresholdOn || 0.1;
+    var treshold = self.config.treshold || 0.1;
+    var resend = self.config.resend || false;
 
-    if (urlChange && urlChange !== '') {
-      console.log("Sensor changed, updating: " + id + '=' + value);
-      http.request({
-        method: 'GET',
-        url: urlChange
-          .replace("${id}", id)
-          .replace("${value}", value)
-          .replace("${alias}", alias)
-      });
-    }
-    if (urlOn && urlOn !== '') {
-      if (value >= tresholdOn) {
+    // state is stored as a string, that way we will also send a value the first time we
+    // check.
+    var state = value > treshold ? 'on' : 'off';
+    var stateHasChanged = state !== self.currentState;
+    self.currentState = state;
+
+    if (state === 'on') {
+      if (urlOn && (stateHasChanged || resend)) {
         console.log("Sensor value is on, updating: " + id + '=' + value);
         http.request({
           method: 'GET',
@@ -67,9 +62,8 @@ PowerSensorWebhook.prototype.init = function (config) {
             .replace("${alias}", alias)
         });
       }
-    }
-    if (urlOff && urlOff !== '') {
-      if (value <= tresholdOff) {
+    } else {
+      if (urlOff && (stateHasChanged || resend)) {
         console.log("Sensor value is off, updating: " + id + '=' + value);
         http.request({
           method: 'GET',
